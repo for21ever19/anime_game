@@ -2,7 +2,9 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 import io
 import card_creator
-from config import BOT_TOKEN
+import os
+
+
 from class_App import App
 
 
@@ -10,8 +12,11 @@ from class_App import App
 class TelegramBot:
     def __init__(self):
         self.user_apps = {}
-        
-        self.application = Application.builder().token(BOT_TOKEN).build()
+        bot_token = os.environ.get('BOT_TOKEN') 
+
+        # Инициализируем бота, используя полученный токен
+
+        self.application = Application.builder().token(bot_token).build()
 
         start_handler = CommandHandler('start', self.start)
 
