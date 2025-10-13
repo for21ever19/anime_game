@@ -1,4 +1,4 @@
-from PIL import ImageTk, Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 rarity_frames = {
     'S': 'Anime_frame/S.Rank.png', 
