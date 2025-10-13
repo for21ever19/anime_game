@@ -37,8 +37,28 @@ class TelegramBot:
         keyboard = [[InlineKeyboardButton("⬅️ Назад в Главное меню", callback_data='back_to_main_menu')]]
         return InlineKeyboardMarkup(keyboard)
 
-    
-    
+    def _create_collection_pagination_keyboard(self, current_index, total_cards):
+        keyboard = []
+        row = []
+
+        # Кнопка "Назад"
+        if current_index > 0:
+            row.append(InlineKeyboardButton("⬅️ Назад", callback_data=f"collection_prev_{current_index - 1}"))
+
+        # Индикатор страницы
+        row.append(InlineKeyboardButton(f"{current_index + 1}/{total_cards}", callback_data="noop")) # noop - no operation
+
+        # Кнопка "Вперед"
+        if current_index < total_cards - 1:
+            row.append(InlineKeyboardButton("Вперед ➡️", callback_data=f"collection_next_{current_index + 1}"))
+        
+        keyboard.append(row)
+        # Добавляем кнопку выхода в главное меню
+        keyboard.append([InlineKeyboardButton("⬆️ В главное меню", callback_data='back_to_main_menu')])
+
+        return InlineKeyboardMarkup(keyboard)
+
+        
 
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -242,15 +262,32 @@ class TelegramBot:
                 await query.edit_message_text(text= 'Ваша колекция пуста.', reply_markup=back_keyboard)
             
             else:
-                collection_text = "Ваши карты:\n\n"
-                for card in collection.values():
-                    collection_text += f"[{card['rarity']}] {card['name']} ({card['anime']})\n" 
-                    back_keyboard = self._create_back_to_main_menu_keyboard()
+                # 1. Подготовим данные
+                app.current_collection_index = 0
+                card_name = app.collection_list[app.current_collection_index]
+                card_data = collection[card_name]
+                total_cards = len(collection)
 
-    
-    # Отправляем результат!
-                    await query.edit_message_text(text=collection_text, reply_markup=back_keyboard)
+                # 2. Подготовим картинку (твой код идеален)
+                image_object = card_creator.create_card_image(card_data)
+                bio = io.BytesIO()
+                bio.name = 'image.png'
+                image_object.save(bio, 'PNG')
+                bio.seek(0)
 
+                
+                # 4. Подготовим клавиатуру
+                pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
+
+                # 5. Сначала удалим старое текстовое сообщение
+                await query.message.delete()
+
+                # 6. Отправим новое с фото и всеми подготовленными частями
+                await context.bot.send_photo(
+                    chat_id=user_id,
+                    photo=bio,
+                    reply_markup=pagination_keyboard
+                )
 
 
 
