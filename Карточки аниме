@@ -1,0 +1,86 @@
+import random 
+import json
+
+c_cards = []
+b_cards = []
+a_cards = []
+s_cards = []
+
+try:
+    with open('collection.json', 'r', encoding='utf-8') as f:
+        user_collection = json.load(f)
+    
+except FileNotFoundError:
+    user_collection = []
+
+all_cards = [{'anime': 'One Piece', 
+          'name': 'Monkey D. Luffy',
+          'rarity': 'S'},
+         {'anime': 'Gitnama',
+          'name': 'Katsura Kataro',
+          'rarity': 'B'}, 
+          {'anime': 'Vinland Saga',
+          'name': 'Torkel The Tall',
+          'rarity': 'A'},
+          {'anime': 'Vinland Saga',
+          'name': 'Askeladd',
+          'rarity': 'A'},
+          {'anime': 'Vinland Saga',
+          'name': 'Ragnar',
+          'rarity': 'C'},
+          {'anime': 'Gintama',
+          'name': 'Shinpachi',
+          'rarity': 'A'},
+          {'anime': 'Demon Slayer',
+          'name': 'Inosuke',
+          'rarity': 'C'},
+
+]
+
+for card in all_cards:
+    if card['rarity'] == 'C':
+        c_cards.append(card)
+    elif card['rarity'] == 'B':
+        b_cards.append(card)
+    elif card['rarity'] == 'A':
+        a_cards.append(card)
+    elif card['rarity'] == 'S':
+        s_cards.append(card)
+
+
+
+while True:
+    print('--- Главное меню ---')
+    print('1. Получить новую карточку')
+    print('2. Выйти из игры')
+    print('3. Показать мою коллекцию')
+    user_answwer = input('Выберите пожалуйста опцию:')
+    if user_answwer == '1':
+        chance = random.randint(1, 100)
+
+        if chance <= 60:
+            card = random.choice(c_cards) 
+            print(card)
+        elif chance <= 85:
+            card = random.choice(b_cards) 
+            print(card)
+        elif chance <= 99:
+            card = random.choice(a_cards) 
+            print(card)
+        elif chance == 100:
+            card = random.choice(s_cards) 
+            print(card)
+        user_collection.append(card)
+    elif user_answwer == '2':
+        with open('collection.json', 'w', encoding='utf-8') as f:
+            json.dump(user_collection, f, ensure_ascii=False, indent=4)
+        break
+    elif user_answwer == '3':
+        if len(user_collection) == 0:
+            print('Ваша коллекция пуста.')
+        else:
+            for cardie in user_collection:
+                print(f"[{cardie['rarity']}] {cardie['name']} ({cardie['anime']})")
+    else:
+        print('Это была ловушка, и вы в нее попались...')
+
