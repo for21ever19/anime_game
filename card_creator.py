@@ -1,4 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
+FONTS_DIR = os.path.join(BASE_DIR, 'fonts')
+QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 rarity_frames = {
     'S': 'Anime_frame/S.Rank.png', 

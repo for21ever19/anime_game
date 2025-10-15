@@ -2,10 +2,13 @@ import random
 import json
 import os
 import card_creator
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
+FONTS_DIR = os.path.join(BASE_DIR, 'fonts')
+QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 class App:
-    def __init__(self):
+    def __init__(self, questions_dir):
         print("--- Чекпойнт 1: App.__init__ НАЧАЛСЯ ---")
         self.all_cards = []  # Список для всех карт
         self.sorted_cards = {'C': [], 'B': [], 'A': [], 'S': []} 

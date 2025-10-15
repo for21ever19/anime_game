@@ -4,6 +4,10 @@ import io
 import card_creator
 import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
+FONTS_DIR = os.path.join(BASE_DIR, 'fonts')
+QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 from class_App import App
 
@@ -71,7 +75,7 @@ class TelegramBot:
         if user_id not in self.user_apps:
             
             print(f"--- Создаю новый экземпляр App для пользователя {user_id} ---")
-            self.user_apps[user_id] = App()
+            self.user_apps[user_id] = App(questions_dir=QUESTIONS_DIR)
 
         app = self.user_apps[user_id]
 
@@ -93,7 +97,7 @@ class TelegramBot:
         user_id = update.effective_user.id
         if user_id not in self.user_apps:
             print(f"--- Создаю новый экземпляр App для пользователя {user_id} ---")
-            self.user_apps[user_id] = App()
+            self.user_apps[user_id] = App(questions_dir=QUESTIONS_DIR)
 
         app = self.user_apps[user_id]
 
@@ -136,7 +140,7 @@ class TelegramBot:
                 await query.edit_message_text(text = card_result, reply_markup=reply_markup1)
             
             else:
-                image_object = card_creator.create_card_image(card_result)
+                image_object = card_creator.create_card_image(card_result, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
                 bio = io.BytesIO()
                 bio.name = 'image.png'
                 image_object.save(bio, 'PNG')
@@ -274,7 +278,7 @@ class TelegramBot:
                 total_cards = len(collection)
 
                 # 2. Подготовим картинку (твой код идеален)
-                image_object = card_creator.create_card_image(card_data)
+                image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
                 bio = io.BytesIO()
                 bio.name = 'image.png'
                 image_object.save(bio, 'PNG')
