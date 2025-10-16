@@ -2,21 +2,23 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRAME_DIR = os.path.join(BASE_DIR, 'Anime_frame')
 IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
 FONTS_DIR = os.path.join(BASE_DIR, 'fonts')
 QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 rarity_frames = {
-    'S': 'Anime_frame/S.Rank.png', 
-    'A': 'Anime_frame/A.Rank.png',
-    'B': 'Anime_frame/B.Rank.png',
-    'C': 'Anime_frame/C.Rank.png'
+    'S': os.path.join(FRAME_DIR, 'S.Rank.png'),
+    'A': os.path.join(FRAME_DIR, 'A.Rank.png'),
+    'B': os.path.join(FRAME_DIR, 'B.Rank.png'),
+    'C': os.path.join(FRAME_DIR, 'C.Rank.png')
 }
 
-def create_card_image(card_data):
+def create_card_image(card_data, images_dir, fonts_dir):
     char_filename = card_data['image_path']
     scale = 2
-    char_path = f"images_processed/{char_filename}"
+
+    char_path = os.path.join(images_dir, char_filename) # <--- ИЗМЕНЕНИЕ
     card_width, card_height = 250, 387
     final_card = Image.open(char_path).convert("RGBA").resize((card_width * scale, card_height * scale), Image.Resampling.LANCZOS)
     rarity_key = card_data['rarity']
@@ -31,12 +33,16 @@ def create_card_image(card_data):
     
     
     draw = ImageDraw.Draw(final_card)
-    name_font = ImageFont.truetype("Fonts/BebasNeue.ttf", 36 * scale)
-    anime_font = ImageFont.truetype("Fonts/Roboto-Regular.ttf", 20 * scale)
+    bebas_font_path = os.path.join(fonts_dir, "BebasNeue.ttf") # <--- ИЗМЕНЕНИЕ
+    name_font = ImageFont.truetype(bebas_font_path, 36 * scale)
+
+    roboto_font_path = os.path.join(fonts_dir, "Roboto-Regular.ttf") # <--- ИЗМЕНЕНИЕ
+    anime_font = ImageFont.truetype(roboto_font_path, 20 * scale)
+
     draw.text((15 * scale, 310 * scale), card_data['name'], font=name_font, fill='white')
     draw.text((15 * scale, 350 * scale), card_data['anime'], font=anime_font, fill='white')
     
-    rarity_font = ImageFont.truetype("fonts/BebasNeue.ttf", 39 * scale)
+    rarity_font = ImageFont.truetype(bebas_font_path, 39 * scale) # <--- ИЗМЕНЕНИЕ
     circle_center_x = 33 * scale
     circle_center_y = 22 * scale
     rarity_text = card_data['rarity']
@@ -62,7 +68,7 @@ if __name__ == "__main__":
     'anime': 'Vinland Saga'   
 
     }
-    result_image = create_card_image(test_card) 
+    result_image = create_card_image(test_card, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR) 
     result_image.show()
 
 

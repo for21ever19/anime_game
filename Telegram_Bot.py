@@ -53,7 +53,7 @@ class TelegramBot:
         # Кнопка "Назад"
         if current_index > 0:
             row.append(InlineKeyboardButton("⬅️ Назад", callback_data=f"collection_prev_{current_index - 1}"))
-
+            
         # Индикатор страницы
         row.append(InlineKeyboardButton(f"{current_index + 1}/{total_cards}", callback_data="noop")) # noop - no operation
 
