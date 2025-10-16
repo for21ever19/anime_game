@@ -4,7 +4,7 @@ import os
 import card_creator
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
-FONTS_DIR = os.path.join(BASE_DIR, 'fonts')
+FONTS_DIR = os.path.join(BASE_DIR, 'Fonts')
 QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 class App:

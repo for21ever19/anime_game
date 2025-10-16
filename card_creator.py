@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FRAME_DIR = os.path.join(BASE_DIR, 'Anime_frame')
 IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
-FONTS_DIR = os.path.join(BASE_DIR, 'fonts')
+FONTS_DIR = os.path.join(BASE_DIR, 'Fonts')
 QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 rarity_frames = {
