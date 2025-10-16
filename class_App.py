@@ -19,13 +19,12 @@ class App:
         self.current_collection_index = 0
 
 
-
         self._load_cards()
 
         self.balance = 0
 
-        self.all_subjects_data = {}
-        self.load_questions()
+        self.all_subjects_data = self.load_questions(questions_dir) # <--- ИЗМЕНЕНИЕ
+
         print("--- Чекпойнт 2: Загрузка данных ЗАВЕРШЕНА ---")
         self.current_subject = None
         self.current_question = None
@@ -159,11 +158,12 @@ class App:
 
 
 
-    def load_questions(self):
-        QUESTIONS_FOLDER = 'questions' # Указываем имя нашей папки
-        if os.path.exists(QUESTIONS_FOLDER):
-            # Проходим по каждому файлу в этой папке
-            for filename in os.listdir(QUESTIONS_FOLDER):
+    def load_questions(self, questions_folder_path): # <--- ИЗМЕНЕНИЕ
+        local_subjects_data = {} 
+        if os.path.exists(questions_folder_path): # <--- ИЗМЕНЕНИЕ
+
+            for filename in os.listdir(questions_folder_path): # <--- ИЗМЕНЕНИЕ
+
                 print(f"Найден файл: {filename}")
                 # Нас интересуют только файлы, заканчивающиеся на .json
                 if filename.endswith('.json') and not filename.startswith('.'):
@@ -171,7 +171,7 @@ class App:
                     subject_name = filename.split('.')[0]
                     
                     # Собираем полный путь к файлу
-                    file_path = os.path.join(QUESTIONS_FOLDER, filename)
+                    file_path = os.path.join(questions_folder_path, filename) # <--- ИЗМЕНЕНИЕ
                     
                     try:
                         with open(file_path, 'r', encoding='utf-8') as f:
@@ -185,14 +185,15 @@ class App:
                                     sorted_questions[difficulty].append(q_data)
                             
                             # Складываем отсортированные вопросы в наше общее хранилище
-                            self.all_subjects_data[subject_name] = sorted_questions
+                            local_subjects_data[subject_name] = sorted_questions
                             print(f"Предмет '{subject_name}' успешно загружен.")
                     except Exception as e:
                         print(f"Ошибка при загрузке файла {filename}: {e}")
         else:
-            print(f"ВНИМАНИЕ: Папка '{QUESTIONS_FOLDER}' не найдена. Викторина будет недоступна.")
+            print(f"ВНИМАНИЕ: Папка '{questions_folder_path}' не найдена.")
 
-        
+        return local_subjects_data # <--- ИЗМЕНЕНИЕ
+
 
     def gambling(self, amount):
         self.balance += amount
