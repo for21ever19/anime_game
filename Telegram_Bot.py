@@ -1,4 +1,4 @@
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto
 from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQueryHandler
 import io
 import card_creator
@@ -67,7 +67,11 @@ class TelegramBot:
 
         return InlineKeyboardMarkup(keyboard)
 
-        
+
+
+
+
+
 
 
     async def start(self, update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -288,6 +292,8 @@ class TelegramBot:
                 # 4. Подготовим клавиатуру
                 pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
 
+
+
                 # 5. Сначала удалим старое текстовое сообщение
                 await query.message.delete()
 
@@ -297,6 +303,71 @@ class TelegramBot:
                     photo=bio,
                     reply_markup=pagination_keyboard
                 )
+
+
+        elif query.data.startswith('collection_next_'):
+            collection = app.user_collection
+            total_cards = len(collection)
+
+            new_index = int(query.data[16:]) # Тут тоже 16 символов, но см. ниже
+            app.current_collection_index = new_index
+
+            card_name = app.collection_list[app.current_collection_index]
+            card_data = collection[card_name]
+
+
+            # 2. Подготовим картинку (твой код идеален)
+            image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
+            bio = io.BytesIO()
+            bio.name = 'image.png'
+            image_object.save(bio, 'PNG')
+            bio.seek(0)
+
+            
+            # 4. Подготовим клавиатуру
+            pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
+
+
+            media = InputMediaPhoto(media=bio) # Оборачиваем картинку в специальный класс
+            # 5. Изменим фотографию
+            await query.edit_message_media(
+                media=media,
+                reply_markup=pagination_keyboard
+            )
+
+
+        elif query.data.startswith('collection_prev_'):
+            collection = app.user_collection
+            total_cards = len(collection)
+            new_index = int(query.data[16:]) 
+            app.current_collection_index = new_index
+
+            card_name = app.collection_list[app.current_collection_index]
+            card_data = collection[card_name]
+
+
+            # 2. Подготовим картинку (твой код идеален)
+            image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
+            bio = io.BytesIO()
+            bio.name = 'image.png'
+            image_object.save(bio, 'PNG')
+            bio.seek(0)
+
+            
+            # 4. Подготовим клавиатуру
+            pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
+
+
+
+            media = InputMediaPhoto(media=bio) # Оборачиваем картинку в специальный класс
+            # 5. Изменим фотографию
+            await query.edit_message_media(
+                media=media,
+                reply_markup=pagination_keyboard
+            )
+
+
+
 
 
 
