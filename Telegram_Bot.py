@@ -256,9 +256,7 @@ class TelegramBot:
             reply_markup1 = self._create_main_menu_keyboard()
             
 
-            await query.message.delete()
-            await context.bot.send_message(
-                chat_id = user_id,
+            await query.edit_message_text(
                 text = f"Главное меню\n\nВаш баланс: {app.balance} 💎",
                 reply_markup = reply_markup1
             )
