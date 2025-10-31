@@ -18,6 +18,8 @@ class TelegramBot:
         self.user_apps = {}
         bot_token = os.environ.get('BOT_TOKEN') 
 
+        self.main_menu_message_id = None
+
         # Инициализируем бота, используя полученный токен
 
         self.application = Application.builder().token(bot_token).build()
@@ -93,7 +95,12 @@ class TelegramBot:
         reply_markup1 = self._create_main_menu_keyboard()
 
         
-        await update.message.reply_text(f"Главное меню\n\nВаш баланс: {app.balance} 💎", reply_markup=reply_markup1)
+        sent_message = await update.message.reply_text(f"Главное меню\n\nВаш баланс: {app.balance} 💎", reply_markup=reply_markup1)
+        
+        # Записываем ID этого сообщения в наш объект App
+        app.main_menu_message_id = sent_message.message_id
+        print(f"Сохранил ID главного меню {app.main_menu_message_id} для пользователя {user_id}")
+
 
 
 ################
@@ -253,13 +260,46 @@ class TelegramBot:
         elif query.data == 'back_to_main_menu':
 
 
-            reply_markup1 = self._create_main_menu_keyboard()
-            
 
-            await query.edit_message_text(
-                text = f"Главное меню\n\nВаш баланс: {app.balance} 💎",
-                reply_markup = reply_markup1
-            )
+            reply_markup1 = self._create_main_menu_keyboard()
+            text = f"Главное меню\n\nВаш баланс: {app.balance} 💎"
+
+            # Проверяем, есть ли у сообщения, с которого пришел запрос, фотография
+            if not query.message.photo:
+                # СЛУЧАЙ 1: Возврат из текстового меню (например, выбор предметов)
+                # Просто редактируем это же сообщение
+                await query.edit_message_text(text=text, reply_markup=reply_markup1)
+                # И на всякий случай обновляем ID якоря (вдруг что)
+                app.main_menu_message_id = query.message.message_id
+                print(f"Обновил текстовое меню. ID якоря: {app.main_menu_message_id}")
+
+            else:
+                # СЛУЧАЙ 2: Возврат из-под картинки (самое интересное!)
+                
+                # Шаг А: Удаляем сообщение с картинкой, на котором нажали кнопку
+                await query.message.delete()
+                
+                # Шаг Б: Пытаемся удалить СТАРОЕ главное меню, используя сохраненный ID.
+                # Это нужно делать в try/except, т.к. пользователь мог удалить его вручную.
+                try:
+                    if app.main_menu_message_id:
+                        await context.bot.delete_message(chat_id=user_id, message_id=app.main_menu_message_id)
+                        print(f"Удалил старый якорь {app.main_menu_message_id}")
+                except Exception as e:
+                    print(f"Не смог удалить старый якорь (возможно, его уже нет): {e}")
+
+                # Шаг В: Отправляем НОВОЕ главное меню
+                new_menu_message = await context.bot.send_message(
+                    chat_id=user_id,
+                    text=text,
+                    reply_markup=reply_markup1
+                )
+                
+                # Шаг Г: Сохраняем ID НОВОГО якоря!
+                app.main_menu_message_id = new_menu_message.message_id
+                print(f"Создал новый якорь. ID: {app.main_menu_message_id}")
+
+
 
 
 
@@ -279,7 +319,7 @@ class TelegramBot:
                 card_data = collection[card_name]
                 total_cards = len(collection)
 
-                # 2. Подготовим картинку (твой код идеален)
+                # 2. Подготовим картинку 
                 image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
                 bio = io.BytesIO()
                 bio.name = 'image.png'
