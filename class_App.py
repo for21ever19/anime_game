@@ -131,7 +131,7 @@ class App:
                 {'anime': 'Belzebub',
                 'name': 'Oga and Belze',
                 'rarity': 'A',
-                'image_path': 'belzebub.png'},
+                'image_path': 'beelzebub.png'},
                 {'anime': 'Grand Blue',
                 'name': 'Diving',
                 'rarity': 'C',
