@@ -1,0 +1,7 @@
+{
+    "main_menu_title": "Main menu",
+    "balance_text": "Your balance: {balance} 💎",
+    "start_quiz_button": "Start quiz",
+    "get_card_button": "Get a new card",
+    "show_collection_button": "Show collection"
+  }
