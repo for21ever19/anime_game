@@ -29,7 +29,7 @@ class App:
         self.current_subject = None
         self.current_question = None
 
-
+        self.language = None
 
     def _load_cards(self):
             self.all_cards = [{'anime': 'One Piece', 
