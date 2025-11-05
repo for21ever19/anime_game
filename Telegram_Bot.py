@@ -116,12 +116,13 @@ class TelegramBot:
 
         app = self.user_apps[user_id]
         language = app.language
+        query = update.callback_query
 
         if not language and query.data not in ['ru', 'en']:
             await query.answer("Пожалуйста, выберите язык, отправив команду /start", show_alert=True)
             return
 
-        query = update.callback_query
+
         await query.answer()
 
         if query.data in ['ru', 'en']:
@@ -163,14 +164,14 @@ class TelegramBot:
 
 
             await query.edit_message_text(
-                text="Какая тема тебе интересна?",
+                text=localization.get_string(language, 'ask_subject'),
                 reply_markup=subjects_keyboard
             )
 
         elif query.data == 'get_card':
             card_result = app.get_new_card()
             if isinstance(card_result, str):
-                reply_markup1 = self._create_main_menu_keyboard()
+                reply_markup1 = self._create_main_menu_keyboard(language)
 
 
                 await query.edit_message_text(text = card_result, reply_markup=reply_markup1)
@@ -195,7 +196,7 @@ class TelegramBot:
             selected_subject = query.data[8:]
             app.subject_selected(selected_subject)
 
-            difficulty = ["Легкий", "Средний", "Сложный"]
+            difficulty = [localization.get_string(language, 'easy_dif'), localization.get_string(language, 'mid_dif'), localization.get_string(language, 'diff_dif')]
 
             keyboard = []
 
@@ -207,7 +208,7 @@ class TelegramBot:
 
                 keyboard.append([button])
             
-            back_button = InlineKeyboardButton("⬅️ Назад к предметам", callback_data='back_to_subjects')
+            back_button = InlineKeyboardButton(localization.get_string(language, 'back_to_subjects_button'), callback_data='back_to_subjects')
             keyboard.append([back_button])
 
 
@@ -215,7 +216,7 @@ class TelegramBot:
 
             subject_name = selected_subject.capitalize()
             await query.edit_message_text(
-                text=f"Вы выбрали предмет: {subject_name}. Теперь выберите сложность.",
+                text=localization.get_string(language, 'select_difficulty_text', subject = subject_name),
                 reply_markup=difficulty_keyboard
             )
         elif query.data.startswith('difficulty_'):
@@ -241,16 +242,16 @@ class TelegramBot:
 
 
         elif query.data.startswith('answer_'):
-            back_to_menu_keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]])
+            back_to_menu_keyboard = self._create_back_to_main_menu_keyboard(language)
 
             current_index = int(query.data[7:])
             selected_answer = app.current_question['options'][current_index]
             is_correct = app.check_answer(selected_answer)
             if is_correct:
-                await query.edit_message_text(text=f'Верно! ✅\n\nВаш баланс: {app.balance} 💎', reply_markup=back_to_menu_keyboard)
+                await query.edit_message_text(text=localization.get_string(language, 'correct_answer', balance=app.balance), reply_markup=back_to_menu_keyboard)
 
             else:
-                await query.edit_message_text(text= 'Неверно! ❌', reply_markup=back_to_menu_keyboard)
+                await query.edit_message_text(text= localization.get_string(language, 'incorrect_answer'), reply_markup=back_to_menu_keyboard)
 
 
 
@@ -271,7 +272,7 @@ class TelegramBot:
                 keyboard.append([button])
             
 
-            back_button_row = [InlineKeyboardButton("⬅️ Назад в Главное меню", callback_data='back_to_main_menu')]
+            back_button_row = [InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]
             keyboard.append(back_button_row)
 
             # 2. Теперь, когда список `keyboard` полностью готов, создаем из него объект клавиатуры
@@ -279,7 +280,7 @@ class TelegramBot:
 
 
             await query.edit_message_text(
-                text="Какая тема тебе интересна?",
+                text=localization.get_string(language, 'ask_subject'),
                 reply_markup=subjects_keyboard
             )
 
@@ -287,8 +288,8 @@ class TelegramBot:
 
 
 
-            reply_markup1 = self._create_main_menu_keyboard()
-            text = f"Главное меню\n\nВаш баланс: {app.balance} 💎"
+            reply_markup1 = self._create_main_menu_keyboard(language)
+            text = localization.get_string(language, 'main_menu_full_text')
 
             # Проверяем, есть ли у сообщения, с которого пришел запрос, фотография
             if not query.message.photo:
@@ -332,11 +333,11 @@ class TelegramBot:
         elif query.data == 'show_collection':
             collection = app.user_collection
             if not collection:
-                back_keyboard = self._create_back_to_main_menu_keyboard()
+                back_keyboard = self._create_back_to_main_menu_keyboard(language)
 
 
 
-                await query.edit_message_text(text= 'Ваша колекция пуста.', reply_markup=back_keyboard)
+                await query.edit_message_text(text= localization.get_string(language, 'empty_collection'), reply_markup=back_keyboard)
             
             else:
                 # 1. Подготовим данные
@@ -354,7 +355,7 @@ class TelegramBot:
 
                 
                 # 4. Подготовим клавиатуру
-                pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
+                pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards, language)
 
 
 
@@ -389,7 +390,7 @@ class TelegramBot:
 
             
             # 4. Подготовим клавиатуру
-            pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
+            pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards, language)
 
 
             media = InputMediaPhoto(media=bio) # Оборачиваем картинку в специальный класс
@@ -419,7 +420,7 @@ class TelegramBot:
 
             
             # 4. Подготовим клавиатуру
-            pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards)
+            pagination_keyboard = self._create_collection_pagination_keyboard(app.current_collection_index, total_cards, language)
 
 
 

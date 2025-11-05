@@ -12,3 +12,7 @@ incorrect_answer: Неверно! ❌
 empty_collection: Ваша колекция пуста.
 collection_back_button: ⬅️ Назад
 collection_forward_button: Вперед ➡️
+easy_dif: Легкий
+mid_dif: Средний
+diff_dif: Сложный 
+main_menu_full_text: "Главное меню\n\nВаш баланс: {app.balance} 💎"

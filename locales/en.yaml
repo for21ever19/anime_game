@@ -12,3 +12,7 @@ incorrect_answer: Incorrect! ❌
 empty_collection: Your collection is empty.
 collection_back_button: ⬅️ Back
 collection_forward_button: Forward ➡️
+easy_dif: Easy
+mid_dif: Middle
+diff_dif: Hard 
+main_menu_full_text: "Main Menu\n\nYour balance: {balance} 💎"

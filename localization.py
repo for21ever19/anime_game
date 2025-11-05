@@ -1,22 +1,31 @@
+# localization.py
+
+import i18n
 import os
-import json
+
+# --- НАСТРОЙКА БИБЛИОТЕКИ (делается один раз) ---
+
+# 1. Получаем абсолютный путь к папке с переводами ('locales')
+current_dir_path = os.path.dirname(os.path.abspath(__file__))
+locales_dir_path = os.path.join(current_dir_path, 'locales')
+
+# 2. Указываем библиотеке, где искать наши файлы с переводами
+i18n.load_path.append(locales_dir_path)
+
+# 3. Указываем, какой язык использовать, если запрошенный не найден
+i18n.set('fallback', 'en')
+
+# 4. Указываем, какой формат файлов мы используем (YAML)
+i18n.set('file_format', 'yaml')
 
 
+# --- НАША ЕДИНСТВЕННАЯ ФУНКЦИЯ-ПОМОЩНИК ---
 
-translations = {}
-
-def load_translations():
-        # 1. Получаем абсолютный путь к текущему файлу (localization.py)
-    current_file_path = os.path.abspath(__file__)
-
-    # 2. Получаем путь к папке, в которой лежит этот файл
-    current_dir_path = os.path.dirname(current_file_path)
-
-    # 3. "Приклеиваем" к пути нашей папки имя папки с переводами
-    locales_dir_path = os.path.join(current_dir_path, 'locales')
-
-    # Теперь в переменной locales_dir_path лежит надежный и всегда правильный путь к папке locales
-    all_files_in_locales = os.listdir(locales_dir_path)
-    for file in all_files_in_locales:
-        if file[-5:] == '.json':
-            translations[file[:-5]] = json.load(file_object)
+def get_string(language, key, **kwargs):
+  """
+  Получает строку перевода для указанного языка и ключа.
+  **kwargs используются для подстановки плейсхолдеров, например:
+  get_string('ru', 'balance_text', balance=100)
+  """
+  # Мы просто "пробрасываем" запрос в библиотеку i18n
+  return i18n.t(key, locale=language, **kwargs)
