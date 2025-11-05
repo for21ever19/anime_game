@@ -3,6 +3,9 @@ from telegram.ext import Application, CommandHandler, ContextTypes, CallbackQuer
 import io
 import card_creator
 import os
+import localization
+
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
@@ -15,6 +18,8 @@ from class_App import App
 
 class TelegramBot:
     def __init__(self):
+        self.language = None
+
         self.user_apps = {}
         bot_token = os.environ.get('BOT_TOKEN') 
 
@@ -36,36 +41,41 @@ class TelegramBot:
         self.application.add_handler(button_handler)
 
 
-
-    def _create_main_menu_keyboard(self):
-        quiz_button = InlineKeyboardButton (text = "Начать викторину", callback_data = 'start_quiz')
-        card_button = InlineKeyboardButton (text = "Получить новую карту", callback_data = 'get_card')
-        collection_button = InlineKeyboardButton (text = "Посмотреть коллекцию", callback_data = 'show_collection')
+    def _create_i18_keyboard(self):
+        ru_button = InlineKeyboardButton (text = "Русский 🇷🇺", callback_data = 'ru')
+        en_button = InlineKeyboardButton (text = "English 🇬🇧", callback_data = 'en')
+        keyboard = [[ru_button], [en_button]]
+        return InlineKeyboardMarkup(keyboard)
+    
+    def _create_main_menu_keyboard(self, language: str):
+        quiz_button = InlineKeyboardButton (text = localization.get_string(language, 'start_quiz_button'), callback_data = 'start_quiz')
+        card_button = InlineKeyboardButton (text = localization.get_string(language, 'get_card_button'), callback_data = 'get_card')
+        collection_button = InlineKeyboardButton (text = localization.get_string(language, 'show_collection_button'), callback_data = 'show_collection')
         keyboard = [[quiz_button], [card_button], [collection_button]]
         return InlineKeyboardMarkup(keyboard)
     
-    def _create_back_to_main_menu_keyboard(self):
-        keyboard = [[InlineKeyboardButton("⬅️ Назад в Главное меню", callback_data='back_to_main_menu')]]
+    def _create_back_to_main_menu_keyboard(self, language: str):
+        keyboard = [[InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]]
         return InlineKeyboardMarkup(keyboard)
 
-    def _create_collection_pagination_keyboard(self, current_index, total_cards):
+    def _create_collection_pagination_keyboard(self, current_index, total_cards, language: str):
         keyboard = []
         row = []
 
         # Кнопка "Назад"
         if current_index > 0:
-            row.append(InlineKeyboardButton("⬅️ Назад", callback_data=f"collection_prev_{current_index - 1}"))
+            row.append(InlineKeyboardButton(localization.get_string(language, 'collection_back_button'), callback_data=f"collection_prev_{current_index - 1}"))
             
         # Индикатор страницы
         row.append(InlineKeyboardButton(f"{current_index + 1}/{total_cards}", callback_data="noop")) # noop - no operation
 
         # Кнопка "Вперед"
         if current_index < total_cards - 1:
-            row.append(InlineKeyboardButton("Вперед ➡️", callback_data=f"collection_next_{current_index + 1}"))
+            row.append(InlineKeyboardButton(localization.get_string(language, 'collection_forward_button'), callback_data=f"collection_next_{current_index + 1}"))
         
         keyboard.append(row)
         # Добавляем кнопку выхода в главное меню
-        keyboard.append([InlineKeyboardButton("⬆️ В главное меню", callback_data='back_to_main_menu')])
+        keyboard.append([InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')])
 
         return InlineKeyboardMarkup(keyboard)
 
@@ -83,7 +93,6 @@ class TelegramBot:
             print(f"--- Создаю новый экземпляр App для пользователя {user_id} ---")
             self.user_apps[user_id] = App(questions_dir=QUESTIONS_DIR)
 
-        app = self.user_apps[user_id]
 
         await update.message.reply_text(''' — Скажите, почему Вы решили стать учителем?
     — И правда, почему?
@@ -91,15 +100,10 @@ class TelegramBot:
     — Помолчи, а? Тебе-то что? Если нужна причина — ну по приколу. ''')
     
 
-        
-        reply_markup1 = self._create_main_menu_keyboard()
+        text = "Выберите язык / Choose your language"
+        reply_markup = self._create_i18_keyboard() # Твоя функция для кнопок ru/en
 
-        
-        sent_message = await update.message.reply_text(f"Главное меню\n\nВаш баланс: {app.balance} 💎", reply_markup=reply_markup1)
-        
-        # Записываем ID этого сообщения в наш объект App
-        app.main_menu_message_id = sent_message.message_id
-        print(f"Сохранил ID главного меню {app.main_menu_message_id} для пользователя {user_id}")
+        await update.message.reply_text(text, reply_markup=reply_markup)
 
 
 
@@ -111,10 +115,31 @@ class TelegramBot:
             self.user_apps[user_id] = App(questions_dir=QUESTIONS_DIR)
 
         app = self.user_apps[user_id]
+        language = app.language
 
+        if not language and query.data not in ['ru', 'en']:
+            await query.answer("Пожалуйста, выберите язык, отправив команду /start", show_alert=True)
+            return
 
         query = update.callback_query
         await query.answer()
+
+        if query.data in ['ru', 'en']:
+            app.language = query.data # Сохраняем выбранный язык ('ru' или 'en')
+            print(f"Пользователь {user_id} выбрал язык: {app.language}")
+            text = localization.get_string(app.language, 'main_menu_title') + "\n\n"
+            text += localization.get_string(app.language, 'balance_text', balance=app.balance)
+
+            # Клавиатуру тоже нужно сделать локализованной
+            reply_markup = self._create_main_menu_keyboard(app.language) # Передаем язык в метод
+
+            # Заменяем сообщение "Выберите язык" на Главное Меню
+            sent_message = await query.edit_message_text(text=text, reply_markup=reply_markup)
+            
+            # И СОХРАНЯЕМ ID НАШЕГО "ЯКОРЯ"!
+            app.main_menu_message_id = sent_message.message_id
+            return
+
 
         if query.data == 'start_quiz':
             subjects = app.all_subjects_data.keys()
@@ -130,7 +155,7 @@ class TelegramBot:
                 keyboard.append([button])
             
 
-            back_button_row = [InlineKeyboardButton("⬅️ Назад в Главное меню", callback_data='back_to_main_menu')]
+            back_button_row = [InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]
             keyboard.append(back_button_row)
 
             subjects_keyboard = InlineKeyboardMarkup(keyboard)
@@ -157,7 +182,7 @@ class TelegramBot:
                 image_object.save(bio, 'PNG')
                 bio.seek(0)
 
-                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ В главное меню", callback_data='back_to_main_menu')]])
+                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]])
                 await context.bot.send_photo(
     chat_id=user_id,      # ID чата, куда отправляем
     photo=bio,            # Наш "виртуальный файл" с картинкой      # Текст подписи
@@ -188,8 +213,9 @@ class TelegramBot:
 
             difficulty_keyboard = InlineKeyboardMarkup(keyboard)
 
+            subject_name = selected_subject.capitalize()
             await query.edit_message_text(
-                text=f"Вы выбрали предмет: {selected_subject.capitalize()}. Теперь выберите сложность.",
+                text=f"Вы выбрали предмет: {subject_name}. Теперь выберите сложность.",
                 reply_markup=difficulty_keyboard
             )
         elif query.data.startswith('difficulty_'):
@@ -215,7 +241,7 @@ class TelegramBot:
 
 
         elif query.data.startswith('answer_'):
-            back_to_menu_keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("⬅️ В главное меню", callback_data='back_to_main_menu')]])
+            back_to_menu_keyboard = InlineKeyboardMarkup([[InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]])
 
             current_index = int(query.data[7:])
             selected_answer = app.current_question['options'][current_index]
@@ -417,6 +443,7 @@ class TelegramBot:
 
 
 def main():
+    localization.load_translations() # Загружаем все .yaml файлы
     bot = TelegramBot()
     bot.run()
     
