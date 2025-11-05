@@ -126,16 +126,20 @@ class TelegramBot:
         await query.answer()
 
         if query.data in ['ru', 'en']:
-            app.language = query.data
+            app.language = query.data # Сохраняем выбранный язык ('ru' или 'en')
             print(f"Пользователь {user_id} выбрал язык: {app.language}")
+            text = localization.get_string(app.language, 'main_menu_title') + "\n\n"
+            text += localization.get_string(app.language, 'balance_text', balance=app.balance)
 
-            # Проверяем ТОЛЬКО ОДИН ключ
-            test_text = localization.get_string(app.language, 'start_quiz_button')
+            # Клавиатуру тоже нужно сделать локализованной
+            reply_markup = self._create_main_menu_keyboard(app.language) # Передаем язык в метод
 
-            # Выводим результат теста
-            await query.edit_message_text(text=f"Результат теста: {test_text}")
+            # Заменяем сообщение "Выберите язык" на Главное Меню
+            sent_message = await query.edit_message_text(text=text, reply_markup=reply_markup)
+            
+            # И СОХРАНЯЕМ ID НАШЕГО "ЯКОРЯ"!
+            app.main_menu_message_id = sent_message.message_id
             return
-
 
 
         if query.data == 'start_quiz':
