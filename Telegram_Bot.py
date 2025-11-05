@@ -444,7 +444,6 @@ class TelegramBot:
 
 
 def main():
-    localization.load_translations() # Загружаем все .yaml файлы
     bot = TelegramBot()
     bot.run()
     
