@@ -16,3 +16,22 @@ easy_dif: Easy
 mid_dif: Middle
 diff_dif: Hard
 main_menu_full_text: "Main Menu\n\nYour balance: {balance} 💎"
+
+main_menu_title: Главное меню
+balance_text: "Ваш баланс: {balance} 💎"
+start_quiz_button: Начать викторину
+get_card_button: Получить новую карту
+show_collection_button: Посмотреть коллекцию
+ask_subject: Какая тема тебе интересна?
+back_to_subjects_button: ⬅️ Назад к предметам
+select_difficulty_text: "Вы выбрали предмет: {subject}. Теперь выберите сложность." # <-- ИСПРАВЛЕНО
+back_to_menu: ⬅️ В главное меню
+correct_answer: "Верно! ✅\n\nВаш баланс: {balance} 💎"
+incorrect_answer: Неверно! ❌
+empty_collection: Ваша колекция пуста.
+collection_back_button: ⬅️ Назад
+collection_forward_button: Вперед ➡️
+easy_dif: Легкий
+mid_dif: Средний
+diff_dif: Сложный
+main_menu_full_text: "Главное меню\n\nВаш баланс: {balance} 💎" # <-- ИСПРАВЛЕНО
