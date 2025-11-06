@@ -52,6 +52,8 @@ class TelegramBot:
         return InlineKeyboardMarkup(keyboard)
     
     def _create_main_menu_keyboard(self, language: str):
+        print(f"--- DEBUG: Создаю клавиатуру. Переданный язык: '{language}' ---")
+
         quiz_button = InlineKeyboardButton (text = localization.get_string(language, 'start_quiz_button'), callback_data = 'start_quiz')
         card_button = InlineKeyboardButton (text = localization.get_string(language, 'get_card_button'), callback_data = 'get_card')
         collection_button = InlineKeyboardButton (text = localization.get_string(language, 'show_collection_button'), callback_data = 'show_collection')
