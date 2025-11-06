@@ -5,6 +5,10 @@ import card_creator
 import os
 import localization
 
+import i18n
+import os
+
+
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
