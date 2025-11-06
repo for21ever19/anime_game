@@ -101,9 +101,11 @@ class TelegramBot:
     
 
         text = "Выберите язык / Choose your language"
-        reply_markup = self._create_i18_keyboard() # Твоя функция для кнопок ru/en
+        reply_markup = self._create_i18_keyboard()
+             # Твоя функция для кнопок ru/en
 
         await update.message.reply_text(text, reply_markup=reply_markup)
+
 
 
 

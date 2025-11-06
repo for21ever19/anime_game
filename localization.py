@@ -19,13 +19,15 @@ i18n.set('fallback', 'en')
 i18n.set('file_format', 'yaml')
 
 
+
 # --- НАША ЕДИНСТВЕННАЯ ФУНКЦИЯ-ПОМОЩНИК ---
 
-def get_string(language, key, **kwargs):
+def get_string(lang,key, **kwargs):
   """
   Получает строку перевода для указанного языка и ключа.
   **kwargs используются для подстановки плейсхолдеров, например:
   get_string('ru', 'balance_text', balance=100)
   """
   # Мы просто "пробрасываем" запрос в библиотеку i18n
-  return i18n.t(key, locale=language, **kwargs)
+  i18n.set('locale', lang)
+  return i18n.t(key, **kwargs)
