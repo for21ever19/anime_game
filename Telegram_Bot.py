@@ -204,29 +204,42 @@ class TelegramBot:
             selected_subject = query.data[8:]
             app.subject_selected(selected_subject)
 
-            difficulty = [localization.get_string(language, 'easy_dif'), localization.get_string(language, 'mid_dif'), localization.get_string(language, 'diff_dif')]
+            # 1. Наш словарь-переходник. Все верно.
+            difficulties = {
+                'easy': 'easy_dif',
+                'medium': 'mid_dif',
+                'hard': 'diff_dif'
+            }
 
             keyboard = []
 
-            for levels in difficulty:
+            # 2. Цикл для создания кнопок. Все верно.
+            for key, loc_key in difficulties.items():
+                button_text = localization.get_string(language, loc_key)
+                button_callback = f"difficulty_{key}"
+                
                 button = InlineKeyboardButton(
-                    text=levels, 
-                    callback_data=f"difficulty_{levels.lower()}" 
+                    text=button_text, 
+                    callback_data=button_callback
                 )
-
                 keyboard.append([button])
             
+            # --- ВОТ ЧТО БЫЛО ПРОПУЩЕНО ---
+            
+            # 3. Добавляем кнопку "Назад" (она тоже должна быть локализована)
             back_button = InlineKeyboardButton(localization.get_string(language, 'back_to_subjects_button'), callback_data='back_to_subjects')
             keyboard.append([back_button])
 
-
+            # 4. Создаем из нашего списка объект клавиатуры
             difficulty_keyboard = InlineKeyboardMarkup(keyboard)
 
+            # 5. Отправляем сообщение с текстом и готовой клавиатурой
             subject_name = selected_subject.capitalize()
             await query.edit_message_text(
                 text=localization.get_string(language, 'select_difficulty_text', subject = subject_name),
                 reply_markup=difficulty_keyboard
             )
+            
         elif query.data.startswith('difficulty_'):
             selected_difficulty = query.data[11:] 
             question_data = app.difficulty_selected(selected_difficulty)
