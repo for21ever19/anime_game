@@ -1,19 +1,19 @@
-en:
-  main_menu_title: Main Menu
-  balance_text: "Your balance: {balance} 💎"
-  start_quiz_button: Start the quiz
-  get_card_button: Get a new card
-  show_collection_button: View the collection
-  ask_subject: What topic are you interested in?
-  back_to_subjects_button: ⬅️ Back to subjects
-  select_difficulty_text: "You have selected the subject: {subject}. Now select a difficulty."
-  back_to_menu: ⬅️ Back to Main Menu
-  correct_answer: "Correct! ✅\n\nYour balance: {balance} 💎"
-  incorrect_answer: Incorrect! ❌
-  empty_collection: Your collection is empty.
-  collection_back_button: ⬅️ Back
-  collection_forward_button: Forward ➡️
-  easy_dif: Easy
-  mid_dif: Middle
-  diff_dif: Hard
-  main_menu_full_text: "Main Menu\n\nYour balance: {balance} 💎"
+
+main_menu_title: Main Menu
+balance_text: "Your balance: {balance} 💎"
+start_quiz_button: Start the quiz
+get_card_button: Get a new card
+show_collection_button: View the collection
+ask_subject: What topic are you interested in?
+back_to_subjects_button: ⬅️ Back to subjects
+select_difficulty_text: "You have selected the subject: {subject}. Now select a difficulty."
+back_to_menu: ⬅️ Back to Main Menu
+correct_answer: "Correct! ✅\n\nYour balance: {balance} 💎"
+incorrect_answer: Incorrect! ❌
+empty_collection: Your collection is empty.
+collection_back_button: ⬅️ Back
+collection_forward_button: Forward ➡️
+easy_dif: Easy
+mid_dif: Middle
+diff_dif: Hard
+main_menu_full_text: "Main Menu\n\nYour balance: {balance} 💎"

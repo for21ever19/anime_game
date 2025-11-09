@@ -21,16 +21,10 @@ i18n.set('file_format', 'yaml')
 i18n.set('placeholder_delimiter', '{')
 
 # --- НАША ОСНОВНАЯ ФУНКЦИЯ ---
-def get_string(language: str, key: str, **kwargs) -> str:
-    """
-    Возвращает локализованную строку.
-    Пример:
-        get_string('ru', 'balance_text', balance=100)
-    """
+def get_string(language, key, **kwargs):
     try:
-        # ВАЖНО: добавляем язык в путь ключа, т.к. в YAML верхний уровень — en:, ru:
-        return i18n.t(f"{language}.{key}", **kwargs)
+        # ⚠️ убери язык из ключа, т.к. теперь YAML без уровня 'en:'
+        return i18n.t(key, locale=language, **kwargs)
     except Exception as e:
-        print(f"[localization] Ошибка при получении ключа '{key}' для языка '{language}': {e}")
-        # Возвращаем сам ключ, если перевод не найден
+        print(f"[localization] Ошибка: {e}")
         return key
