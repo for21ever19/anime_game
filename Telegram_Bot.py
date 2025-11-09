@@ -297,7 +297,7 @@ class TelegramBot:
 
 
             reply_markup1 = self._create_main_menu_keyboard(language)
-            text = localization.get_string(language, 'main_menu_full_text')
+            text = localization.get_string(language, 'main_menu_full_text', balance=app.balance)
 
             # Проверяем, есть ли у сообщения, с которого пришел запрос, фотография
             if not query.message.photo:
