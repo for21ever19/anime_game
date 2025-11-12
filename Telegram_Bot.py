@@ -224,13 +224,13 @@ class TelegramBot:
             keyboard.append([back_button])
 
             # 4. Создаем из нашего списка объект клавиатуры
-            difficulty_keyboard = InlineKeyboardMarkup(keyboard)
+            self.difficulty_keyboard = InlineKeyboardMarkup(keyboard)
 
             # 5. Отправляем сообщение с текстом и готовой клавиатурой
             subject_name = selected_subject.capitalize()
             await query.edit_message_text(
                 text=localization.get_string(language, 'select_difficulty_text', subject = subject_name),
-                reply_markup=difficulty_keyboard
+                reply_markup=self.difficulty_keyboard
             )
             
         elif query.data.startswith('difficulty_'):
@@ -262,10 +262,10 @@ class TelegramBot:
             selected_answer = app.current_question['options'][current_index]
             is_correct = app.check_answer(selected_answer)
             if is_correct:
-                await query.edit_message_text(text=localization.get_string(language, 'correct_answer', balance=app.balance), reply_markup=back_to_menu_keyboard)
+                await query.edit_message_text(text=localization.get_string(language, 'correct_answer', balance=app.balance), reply_markup=self.difficulty_keyboard)
 
             else:
-                await query.edit_message_text(text= localization.get_string(language, 'incorrect_answer'), reply_markup=back_to_menu_keyboard)
+                await query.edit_message_text(text= localization.get_string(language, 'incorrect_answer'), reply_markup=self.difficulty_keyboard)
 
 
 
