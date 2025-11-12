@@ -190,7 +190,7 @@ class App:
         return subjects_name
 
     def difficulty_selected(self, level):
-        question = random.choice(self.all_subjects_data[self.current_subject][level.lower()])
+        question = random.choice(self.all_subjects_data[self.language][self.current_subject][level.lower()])
     
         # 2. "Мозг, запомни: текущий вопрос - это вот этот словарь {...}"
         self.current_question = question
@@ -204,11 +204,11 @@ class App:
         is_correct = (selected_option == correct)   
         
         if is_correct:
-            if self.current_question['difficulty'] == 'легкий':
+            if self.current_question['difficulty'] in ('легкий', 'easy'):
                 self.gambling(210)
-            if self.current_question['difficulty']  == 'средний':
+            if self.current_question['difficulty']  in ('средний', 'medium'):
                 self.gambling(270)
-            if self.current_question['difficulty']  == 'сложный':
+            if self.current_question['difficulty']  in ('сложный', 'hard'):
                 self.gambling(350)
 
         return is_correct
