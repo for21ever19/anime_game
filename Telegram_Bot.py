@@ -217,7 +217,7 @@ class TelegramBot:
                 )
                 keyboard.append([button])
             
-            # --- ВОТ ЧТО БЫЛО ПРОПУЩЕНО ---
+
             
             # 3. Добавляем кнопку "Назад" (она тоже должна быть локализована)
             back_button = InlineKeyboardButton(localization.get_string(language, 'back_to_subjects_button'), callback_data='back_to_subjects')
