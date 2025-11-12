@@ -270,8 +270,8 @@ class App:
                             # Складываем отсортированные вопросы в наше общее хранилище
                         all_subjects_data[lang][subject_name] = sorted_questions
                         print(f"Предмет '{subject_name}' успешно загружен.")
-                except Exception as e:
-                        print(f"Ошибка при загрузке файла {filename}: {e}")
+                    except Exception as e:
+                            print(f"Ошибка при загрузке файла {filename}: {e}")
 
 
 
