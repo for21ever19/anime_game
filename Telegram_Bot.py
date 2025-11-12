@@ -58,6 +58,28 @@ class TelegramBot:
         keyboard = [[InlineKeyboardButton(localization.get_string(language, 'back_to_menu'), callback_data='back_to_main_menu')]]
         return InlineKeyboardMarkup(keyboard)
 
+    def _create_difficulty_keyboard(self, language: str):
+        difficulties = {
+            'easy': 'easy_dif',
+            'medium': 'mid_dif',
+            'hard': 'diff_dif'
+        }
+
+        keyboard = []
+
+        for key, loc_key in difficulties.items():
+            button_text = localization.get_string(language, loc_key)
+            button_callback = f"difficulty_{key}"
+            keyboard.append([InlineKeyboardButton(text=button_text, callback_data=button_callback)])
+
+        back_button = InlineKeyboardButton(
+            localization.get_string(language, 'back_to_subjects_button'),
+            callback_data='back_to_subjects'
+        )
+        keyboard.append([back_button])
+
+        return InlineKeyboardMarkup(keyboard)
+
     def _create_collection_pagination_keyboard(self, current_index, total_cards, language: str):
         keyboard = []
         row = []
@@ -224,15 +246,13 @@ class TelegramBot:
             keyboard.append([back_button])
 
             # 4. Создаем из нашего списка объект клавиатуры
-            self.difficulty_keyboard = InlineKeyboardMarkup(keyboard)
-
-            # 5. Отправляем сообщение с текстом и готовой клавиатурой
+            self.difficulty_keyboard = self._create_difficulty_keyboard(language)
             subject_name = selected_subject.capitalize()
             await query.edit_message_text(
-                text=localization.get_string(language, 'select_difficulty_text', subject = subject_name),
-                reply_markup=self.difficulty_keyboard
-            )
-            
+    text=localization.get_string(language, 'select_difficulty_text', subject=subject_name),
+    reply_markup=self._create_difficulty_keyboard(language)
+)
+
         elif query.data.startswith('difficulty_'):
             selected_difficulty = query.data[11:] 
             question_data = app.difficulty_selected(selected_difficulty)
@@ -256,7 +276,7 @@ class TelegramBot:
 
 
         elif query.data.startswith('answer_'):
-            back_to_menu_keyboard = self._create_back_to_main_menu_keyboard(language)
+            # back_to_menu_keyboard = self._create_back_to_main_menu_keyboard(language)
 
             current_index = int(query.data[7:])
             selected_answer = app.current_question['options'][current_index]
