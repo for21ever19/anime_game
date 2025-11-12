@@ -4,17 +4,11 @@ import io
 import card_creator
 import os
 import localization
-
 import i18n
 import os
+import config
 
 
-
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
-FONTS_DIR = os.path.join(BASE_DIR, 'Fonts')
-QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
 
 from class_App import App
 
@@ -97,7 +91,7 @@ class TelegramBot:
         if user_id not in self.user_apps:
             
             print(f"--- Создаю новый экземпляр App для пользователя {user_id} ---")
-            self.user_apps[user_id] = App(questions_dir=QUESTIONS_DIR)
+            self.user_apps[user_id] = App(questions_dir=config.QUESTIONS_DIR)
 
 
         await update.message.reply_text(''' — Скажите, почему Вы решили стать учителем?
@@ -120,7 +114,7 @@ class TelegramBot:
         user_id = update.effective_user.id
         if user_id not in self.user_apps:
             print(f"--- Создаю новый экземпляр App для пользователя {user_id} ---")
-            self.user_apps[user_id] = App(questions_dir=QUESTIONS_DIR)
+            self.user_apps[user_id] = App(questions_dir=config.QUESTIONS_DIR)
 
         app = self.user_apps[user_id]
         language = app.language
@@ -184,7 +178,7 @@ class TelegramBot:
                 await query.edit_message_text(text = card_result, reply_markup=reply_markup1)
             
             else:
-                image_object = card_creator.create_card_image(card_result, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
+                image_object = card_creator.create_card_image(card_result, images_dir=config.IMAGES_DIR, fonts_dir=config.FONTS_DIR)
                 bio = io.BytesIO()
                 bio.name = 'image.png'
                 image_object.save(bio, 'PNG')
@@ -367,7 +361,7 @@ class TelegramBot:
                 total_cards = len(collection)
 
                 # 2. Подготовим картинку 
-                image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
+                image_object = card_creator.create_card_image(card_data, images_dir=config.IMAGES_DIR, fonts_dir=config.FONTS_DIR)
                 bio = io.BytesIO()
                 bio.name = 'image.png'
                 image_object.save(bio, 'PNG')
@@ -402,7 +396,7 @@ class TelegramBot:
 
 
             # 2. Подготовим картинку (твой код идеален)
-            image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
+            image_object = card_creator.create_card_image(card_data, images_dir=config.IMAGES_DIR, fonts_dir=config.FONTS_DIR)
             bio = io.BytesIO()
             bio.name = 'image.png'
             image_object.save(bio, 'PNG')
@@ -432,7 +426,7 @@ class TelegramBot:
 
 
             # 2. Подготовим картинку (твой код идеален)
-            image_object = card_creator.create_card_image(card_data, images_dir=IMAGES_DIR, fonts_dir=FONTS_DIR)
+            image_object = card_creator.create_card_image(card_data, images_dir=config.IMAGES_DIR, fonts_dir=config.FONTS_DIR)
             bio = io.BytesIO()
             bio.name = 'image.png'
             image_object.save(bio, 'PNG')

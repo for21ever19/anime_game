@@ -2,12 +2,7 @@ import random
 import json
 import os
 import card_creator
-import Telegram_Bot as Tb
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
-FONTS_DIR = os.path.join(BASE_DIR, 'Fonts')
-LANGUAGE = Tb.language
-QUESTIONS_DIR = os.path.join(BASE_DIR, f'questions/{LANGUAGE}')
+import config
 
 
 class App:
@@ -26,7 +21,7 @@ class App:
 
         self.balance = 0
 
-        self.all_subjects_data = self.load_questions(questions_dir) # <--- ИЗМЕНЕНИЕ
+        self.all_subjects_data = self.load_questions(config.QUESTIONS_DIR) # <--- ИЗМЕНЕНИЕ
 
         print("--- Чекпойнт 2: Загрузка данных ЗАВЕРШЕНА ---")
         self.current_subject = None
