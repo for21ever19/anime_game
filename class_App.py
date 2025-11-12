@@ -2,10 +2,13 @@ import random
 import json
 import os
 import card_creator
+import Telegram_Bot as Tb
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGES_DIR = os.path.join(BASE_DIR, 'images_processed') # Предполагаю, что картинки в папке 'images'
 FONTS_DIR = os.path.join(BASE_DIR, 'Fonts')
-QUESTIONS_DIR = os.path.join(BASE_DIR, 'questions')
+LANGUAGE = Tb.language
+QUESTIONS_DIR = os.path.join(BASE_DIR, f'questions/{LANGUAGE}')
+
 
 class App:
     def __init__(self, questions_dir):
@@ -180,6 +183,13 @@ class App:
                     self.sorted_cards[rarity].append(card)
 
 
+
+    def get_subjects_for_language(self, lang):
+        subjects = self.all_subjects_data.get(lang, {}) 
+        questions = list(subjects.keys()) 
+        return questions
+
+
     def subject_selected(self, subjects_name):
         self.current_subject = subjects_name
         return subjects_name
@@ -216,10 +226,16 @@ class App:
 
 
     def load_questions(self, questions_folder_path): # <--- ИЗМЕНЕНИЕ
-        local_subjects_data = {} 
-        if os.path.exists(questions_folder_path): # <--- ИЗМЕНЕНИЕ
+        all_subjects_data  = {'en': {},
+        'ru': {}} 
+        supported_languages = ['ru', 'en']
+        if not os.path.exists(questions_folder_path): # <--- ИЗМЕНЕНИЕ
+            print(f"ВНИМАНИЕ: Папка '{questions_folder_path}' не найдена.")
 
-            for filename in os.listdir(questions_folder_path): # <--- ИЗМЕНЕНИЕ
+        for lang in supported_languages:
+            lang_folder_path = os.path.join(questions_folder_path, lang)
+            print(f"Проверяю путь: {lang_folder_path}")
+            for filename in os.listdir(lang_folder_path): # <--- ИЗМЕНЕНИЕ
 
                 print(f"Найден файл: {filename}")
                 # Нас интересуют только файлы, заканчивающиеся на .json
@@ -228,28 +244,38 @@ class App:
                     subject_name = filename.split('.')[0]
                     
                     # Собираем полный путь к файлу
-                    file_path = os.path.join(questions_folder_path, filename) # <--- ИЗМЕНЕНИЕ
+                    file_path = os.path.join(lang_folder_path, filename)
+
                     
                     try:
                         with open(file_path, 'r', encoding='utf-8') as f:
                             questions_list = json.load(f)
                             
-                            # Та же самая логика сортировки, что и раньше
-                            sorted_questions = {"легкий": [], "средний": [], "сложный": []}
-                            for q_data in questions_list:
-                                difficulty = q_data['difficulty']
-                                if difficulty in sorted_questions:
-                                    sorted_questions[difficulty].append(q_data)
-                            
-                            # Складываем отсортированные вопросы в наше общее хранилище
-                            local_subjects_data[subject_name] = sorted_questions
-                            print(f"Предмет '{subject_name}' успешно загружен.")
-                    except Exception as e:
-                        print(f"Ошибка при загрузке файла {filename}: {e}")
-        else:
-            print(f"ВНИМАНИЕ: Папка '{questions_folder_path}' не найдена.")
+                        sorted_questions = {}
 
-        return local_subjects_data # <--- ИЗМЕНЕНИЕ
+                        # Проходим по каждому вопросу из файла
+                        for q_data in questions_list:
+                            # Получаем сложность, например, "легкий" или "easy"
+                            difficulty = q_data['difficulty']
+                            
+                            # Проверяем, встречали ли мы такую сложность РАНЬШЕ
+                            if difficulty not in sorted_questions:
+                                # Если нет - создаем для нее новый пустой список
+                                sorted_questions[difficulty] = []
+                                
+                            # Теперь, когда мы уверены, что список существует, добавляем туда вопрос
+                            sorted_questions[difficulty].append(q_data)
+
+                                                    
+                            # Складываем отсортированные вопросы в наше общее хранилище
+                        all_subjects_data[lang][subject_name] = sorted_questions
+                        print(f"Предмет '{subject_name}' успешно загружен.")
+                except Exception as e:
+                        print(f"Ошибка при загрузке файла {filename}: {e}")
+
+
+
+        return all_subjects_data # <--- ИЗМЕНЕНИЕ
 
 
     def gambling(self, amount):

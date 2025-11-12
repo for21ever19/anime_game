@@ -1,0 +1,212 @@
+[
+    {
+      "topic": "Weapons & Economy",
+      "difficulty": "easy",
+      "question": "What is the primary assault rifle available for purchase only on the Terrorist side?",
+      "options": ["M4A4", "AK-47", "FAMAS", "AUG"],
+      "correct_answer": "AK-47"
+    },
+    {
+      "topic": "Weapons & Economy",
+      "difficulty": "easy",
+      "question": "Which of these is a powerful, high-cost sniper rifle capable of killing an enemy with a single shot to the chest?",
+      "options": ["SSG 08", "SCAR-20", "AWP", "SG 553"],
+      "correct_answer": "AWP"
+    },
+    {
+      "topic": "Weapons & Economy",
+      "difficulty": "medium",
+      "question": "What is the maximum amount of money a player can hold at one time?",
+      "options": ["$8000", "$10000", "$16000", "$12000"],
+      "correct_answer": "$16000"
+    },
+    {
+      "topic": "Weapons & Economy",
+      "difficulty": "medium",
+      "question": "Which pistol is famous for its ability to kill a helmeted opponent with a single headshot at any range?",
+      "options": ["Glock-18", "P250", "Dual Berettas", "Desert Eagle"],
+      "correct_answer": "Desert Eagle"
+    },
+    {
+      "topic": "Weapons & Economy",
+      "difficulty": "hard",
+      "question": "What is the kill reward for a kill made with a standard SMG (excluding the P90)?",
+      "options": ["$100", "$300", "$600", "$900"],
+      "correct_answer": "$600"
+    },
+    {
+      "topic": "Weapons & Economy",
+      "difficulty": "hard",
+      "question": "In a standard competitive match, what is the 'loss bonus' for a team that has lost five or more rounds in a row?",
+      "options": ["$1900", "$2400", "$2900", "$3400"],
+      "correct_answer": "$3400"
+    },
+    {
+      "topic": "Maps & Callouts",
+      "difficulty": "easy",
+      "question": "On the classic map Dust II, the covered, winding tunnel that leads to the B bombsite is commonly called:",
+      "options": ["Connector", "Tunnels", "Long", "Short"],
+      "correct_answer": "Tunnels"
+    },
+    {
+      "topic": "Maps & Callouts",
+      "difficulty": "easy",
+      "question": "On the map Inferno, what is the name of the narrow, crucial chokepoint that leads to the B bombsite?",
+      "options": ["Mid", "Apartments", "Banana", "Pit"],
+      "correct_answer": "Banana"
+    },
+    {
+      "topic": "Maps & Callouts",
+      "difficulty": "medium",
+      "question": "Which map is set in a nuclear power plant and features two vertically-stacked bombsites?",
+      "options": ["Train", "Overpass", "Nuke", "Vertigo"],
+      "correct_answer": "Nuke"
+    },
+    {
+      "topic": "Maps & Callouts",
+      "difficulty": "medium",
+      "question": "On the map Mirage, the elevated walkway that allows snipers to watch over Middle is called:",
+      "options": ["Palace", "Catwalk", "Jungle", "Window"],
+      "correct_answer": "Window"
+    },
+    {
+      "topic": "Maps & Callouts",
+      "difficulty": "hard",
+      "question": "Which map features a historic Moroccan town and was added to the Active Duty map pool in 2022?",
+      "options": ["Anubis", "Ancient", "Agency", "Apollo"],
+      "correct_answer": "Anubis"
+    },
+    {
+      "topic": "Maps & Callouts",
+      "difficulty": "hard",
+      "question": "On the map Overpass, what is the common name for the underground tunnel that connects the A and B sides of the map?",
+      "options": ["Sewers", "Connector", "Pipes", "Underpass"],
+      "correct_answer": "Connector"
+    },
+    {
+      "topic": "Gameplay Mechanics & Strategy",
+      "difficulty": "easy",
+      "question": "Which type of grenade creates a cloud of smoke to block vision?",
+      "options": ["Flashbang", "HE Grenade", "Smoke Grenade", "Molotov"],
+      "correct_answer": "Smoke Grenade"
+    },
+    {
+      "topic": "Gameplay Mechanics & Strategy",
+      "difficulty": "easy",
+      "question": "What is the term for a round where a team saves money by buying very little or no equipment?",
+      "options": ["Force buy", "Full buy", "Eco round", "Anti-eco"],
+      "correct_answer": "Eco round"
+    },
+    {
+      "topic": "Gameplay Mechanics & Strategy",
+      "difficulty": "medium",
+      "question": "How long does it take for a Counter-Terrorist to defuse the bomb WITH a defuse kit?",
+      "options": ["10 seconds", "7 seconds", "5 seconds", "3 seconds"],
+      "correct_answer": "5 seconds"
+    },
+    {
+      "topic": "Gameplay Mechanics & Strategy",
+      "difficulty": "medium",
+      "question": "What is a 'one-way smoke'?",
+      "options": ["A smoke that only Terrorists can see through", "A smoke that allows a player to see out of it while enemies cannot easily see in", "A smoke that cannot be extinguished by a HE grenade", "A smoke that can be picked up after being thrown"],
+      "correct_answer": "A smoke that allows a player to see out of it while enemies cannot easily see in"
+    },
+    {
+      "topic": "Gameplay Mechanics & Strategy",
+      "difficulty": "hard",
+      "question": "What does 'ADR' stand for in post-game statistics?",
+      "options": ["Average Damage per Round", "Average Deaths per Round", "Aim & Damage Ratio", "Accurate Death Rate"],
+      "correct_answer": "Average Damage per Round"
+    },
+    {
+      "topic": "Gameplay Mechanics & Strategy",
+      "difficulty": "hard",
+      "question": "What is 'counter-strafing'?",
+      "options": ["Moving backwards while shooting", "Tapping the opposite movement key to stop instantly and improve accuracy", "Strafing in a circle around an opponent", "Using a grenade to propel yourself forward"],
+      "correct_answer": "Tapping the opposite movement key to stop instantly and improve accuracy"
+    },
+    {
+      "topic": "Esports & History",
+      "difficulty": "easy",
+      "question": "The Ukrainian player Oleksandr Kostyliev, widely considered one of the greatest players of all time, is better known by what nickname?",
+      "options": ["ZywOo", "NiKo", "s1mple", "device"],
+      "correct_answer": "s1mple"
+    },
+    {
+      "topic": "Esports & History",
+      "difficulty": "easy",
+      "question": "What is a 'Major' in the world of professional Counter-Strike?",
+      "options": ["Any tournament with a prize pool over $1 million", "A tournament hosted in North America", "A Valve-sponsored championship, considered the most prestigious title", "An online-only league"],
+      "correct_answer": "A Valve-sponsored championship, considered the most prestigious title"
+    },
+    {
+      "topic": "Esports & History",
+      "difficulty": "medium",
+      "question": "Which Danish team created a legendary dynasty by winning three consecutive Majors in 2018-2019?",
+      "options": ["Ninjas in Pyjamas", "Fnatic", "Natus Vincere", "Astralis"],
+      "correct_answer": "Astralis"
+    },
+    {
+      "topic": "Esports & History",
+      "difficulty": "medium",
+      "question": "Which team won the very first CS:GO Major at DreamHack Winter 2013?",
+      "options": ["Fnatic", "Ninjas in Pyjamas", "VeryGames", "Luminosity Gaming"],
+      "correct_answer": "Fnatic"
+    },
+    {
+      "topic": "Esports & History",
+      "difficulty": "hard",
+      "question": "The infamous 'Olofboost' incident, involving a controversial boost on Overpass, occurred in a Major match between Fnatic and what other team?",
+      "options": ["Team LDLC", "Ninjas in Pyjamas", "Virtus.pro", "Natus Vincere"],
+      "correct_answer": "Team LDLC"
+    },
+    {
+      "topic": "Esports & History",
+      "difficulty": "hard",
+      "question": "Which player is famous for the '1v4' AWP clutch against Team Liquid at the MLG Columbus 2016 Major, which resulted in commemorative graffiti on the map Cache?",
+      "options": ["kennyS", "FalleN", "s1mple", "coldzera"],
+      "correct_answer": "coldzera"
+    },
+    {
+      "topic": "Game Modes & Objectives",
+      "difficulty": "easy",
+      "question": "In a standard 5v5 competitive match, what is the primary objective for the Terrorist team?",
+      "options": ["Defuse the bomb", "Protect the bombsite", "Eliminate all CTs or plant and detonate the bomb", "Rescue a hostage"],
+      "correct_answer": "Eliminate all CTs or plant and detonate the bomb"
+    },
+    {
+      "topic": "Game Modes & Objectives",
+      "difficulty": "easy",
+      "question": "In the 'Deathmatch' game mode, what is the primary goal?",
+      "options": ["Plant the bomb as many times as possible", "Score points by getting kills with various weapons", "Be the last player alive", "Work with a teammate to complete missions"],
+      "correct_answer": "Score points by getting kills with various weapons"
+    },
+    {
+      "topic": "Game Modes & Objectives",
+      "difficulty": "medium",
+      "question": "In 'Wingman' mode, how many players are on each team?",
+      "options": ["1", "2", "3", "5"],
+      "correct_answer": "2"
+    },
+    {
+      "topic": "Game Modes & Objectives",
+      "difficulty": "medium",
+      "question": "What happens in a competitive round if the timer runs out and the Terrorists have not planted the bomb?",
+      "options": ["The Terrorists win the round", "The round is a draw", "The Counter-Terrorists win the round", "The round goes into overtime"],
+      "correct_answer": "The Counter-Terrorists win the round"
+    },
+    {
+      "topic": "Game Modes & Objectives",
+      "difficulty": "hard",
+      "question": "What is the final weapon a player must get a kill with to win an 'Arms Race' match?",
+      "options": ["AWP", "Knife", "Golden Knife", "HE Grenade"],
+      "correct_answer": "Golden Knife"
+    },
+    {
+      "topic": "Game Modes & Objectives",
+      "difficulty": "hard",
+      "question": "In the now-removed 'Hostage Rescue' competitive mode, how could the Counter-Terrorists win a round besides eliminating all enemies?",
+      "options": ["Defuse a bomb", "Hold a capture point", "Rescue one of the two hostages", "Rescue both of the two hostages"],
+      "correct_answer": "Rescue one of the two hostages"
+    }
+]

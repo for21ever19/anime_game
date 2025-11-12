@@ -1,0 +1,212 @@
+[
+    {
+      "topic": "Financial Literacy & Budgeting",
+      "difficulty": "easy",
+      "question": "What is the primary purpose of creating a personal budget?",
+      "options": ["To find out how much money your friends have", "To track your income and expenses to manage your money", "To memorize the prices of everything you buy", "To spend money as quickly as possible"],
+      "correct_answer": "To track your income and expenses to manage your money"
+    },
+    {
+      "topic": "Financial Literacy & Budgeting",
+      "difficulty": "easy",
+      "question": "Which of the following is a good reason to have a savings account?",
+      "options": ["To keep money for unexpected emergencies", "To hide money from your family", "To have an account with a zero balance", "To pay for daily coffee"],
+      "correct_answer": "To keep money for unexpected emergencies"
+    },
+    {
+      "topic": "Financial Literacy & Budgeting",
+      "difficulty": "medium",
+      "question": "What is the main difference between a debit card and a credit card?",
+      "options": ["Debit cards are green and credit cards are blue", "Debit cards use money you have in your bank account, while credit cards use borrowed money", "You can only use credit cards online", "You can only use debit cards at ATMs"],
+      "correct_answer": "Debit cards use money you have in your bank account, while credit cards use borrowed money"
+    },
+    {
+      "topic": "Financial Literacy & Budgeting",
+      "difficulty": "medium",
+      "question": "What does a credit score represent?",
+      "options": ["Your final grade in math class", "The number of friends you have on social media", "A number that shows how likely you are to repay borrowed money", "The amount of money you have in your wallet"],
+      "correct_answer": "A number that shows how likely you are to repay borrowed money"
+    },
+    {
+      "topic": "Financial Literacy & Budgeting",
+      "difficulty": "hard",
+      "question": "What is compound interest?",
+      "options": ["A very complicated type of interest that is impossible to understand", "Interest that you only pay on the first day of the year", "Interest calculated only on the initial principal amount", "Interest earned on both the initial principal and the accumulated interest from previous periods"],
+      "correct_answer": "Interest earned on both the initial principal and the accumulated interest from previous periods"
+    },
+    {
+      "topic": "Financial Literacy & Budgeting",
+      "difficulty": "hard",
+      "question": "In the context of investing, what does 'diversification' mean?",
+      "options": ["Investing all your money in a single company's stock", "Spreading your investments across various assets to reduce risk", "Only investing in companies from your home country", "Avoiding the stock market entirely"],
+      "correct_answer": "Spreading your investments across various assets to reduce risk"
+    },
+    {
+      "topic": "Career & Job Hunting",
+      "difficulty": "easy",
+      "question": "What is a résumé (or CV)?",
+      "options": ["A list of your favorite hobbies", "A detailed story about your life", "A one-to-two-page document summarizing your skills, experience, and education for an employer", "A formal letter of complaint"],
+      "correct_answer": "A one-to-two-page document summarizing your skills, experience, and education for an employer"
+    },
+    {
+      "topic": "Career & Job Hunting",
+      "difficulty": "easy",
+      "question": "What is a professional and courteous action to take after a job interview?",
+      "options": ["Call the interviewer every day to ask if you got the job", "Send a brief thank-you email or note", "Post about the interview on social media", "Do nothing and just wait"],
+      "correct_answer": "Send a brief thank-you email or note"
+    },
+    {
+      "topic": "Career & Job Hunting",
+      "difficulty": "medium",
+      "question": "In a professional context, what is 'networking'?",
+      "options": ["Setting up the Wi-Fi in an office", "Building and maintaining relationships with people who can help with your career", "Playing online games with colleagues", "Fixing computer network problems"],
+      "correct_answer": "Building and maintaining relationships with people who can help with your career"
+    },
+    {
+      "topic": "Career & Job Hunting",
+      "difficulty": "medium",
+      "question": "What is the difference between 'hard skills' and 'soft skills'?",
+      "options": ["Hard skills are difficult to learn, soft skills are easy", "Hard skills are technical abilities (like coding), while soft skills are personal attributes (like communication)", "You can only list hard skills on a résumé", "Soft skills are more important than hard skills"],
+      "correct_answer": "Hard skills are technical abilities (like coding), while soft skills are personal attributes (like communication)"
+    },
+    {
+      "topic": "Career & Job Hunting",
+      "difficulty": "hard",
+      "question": "When an interviewer asks you to 'tell me about a time you handled a conflict', what is the best way to structure your answer?",
+      "options": ["Explain that you never have conflicts with anyone", "Blame the other person involved in the conflict", "Use the STAR method (Situation, Task, Action, Result) to give a clear example", "Briefly say it was resolved without giving any details"],
+      "correct_answer": "Use the STAR method (Situation, Task, Action, Result) to give a clear example"
+    },
+    {
+      "topic": "Career & Job Hunting",
+      "difficulty": "hard",
+      "question": "What is the primary purpose of a 'cover letter'?",
+      "options": ["To repeat everything that is already on your résumé", "To introduce yourself, express interest in a specific job, and highlight your most relevant skills", "To provide a list of references", "To ask about the salary and vacation days"],
+      "correct_answer": "To introduce yourself, express interest in a specific job, and highlight your most relevant skills"
+    },
+    {
+      "topic": "Independent Living & Household Management",
+      "difficulty": "easy",
+      "question": "What is a lease agreement?",
+      "options": ["A monthly magazine subscription", "A set of informal house rules", "A legally binding contract between a tenant and a landlord", "An advertisement for an apartment"],
+      "correct_answer": "A legally binding contract between a tenant and a landlord"
+    },
+    {
+      "topic": "Independent Living & Household Management",
+      "difficulty": "easy",
+      "question": "Which of the following is an example of a common household 'utility'?",
+      "options": ["Netflix subscription", "Electricity", "Gym membership", "Pizza delivery"],
+      "correct_answer": "Electricity"
+    },
+    {
+      "topic": "Independent Living & Household Management",
+      "difficulty": "medium",
+      "question": "What is a 'security deposit' when renting an apartment?",
+      "options": ["An extra fee you pay for better security guards", "A non-refundable payment to hold the apartment", "Money the landlord holds to cover any potential damages you might cause", "Your first month's rent paid in advance"],
+      "correct_answer": "Money the landlord holds to cover any potential damages you might cause"
+    },
+    {
+      "topic": "Independent Living & Household Management",
+      "difficulty": "medium",
+      "question": "Why is it important to know how to do basic meal preparation instead of always eating out?",
+      "options": ["It is generally healthier and more cost-effective", "Restaurants are often closed", "It is a good way to avoid talking to people", "It impresses your friends"],
+      "correct_answer": "It is generally healthier and more cost-effective"
+    },
+    {
+      "topic": "Independent Living & Household Management",
+      "difficulty": "hard",
+      "question": "What is the primary purpose of renter's insurance?",
+      "options": ["It pays your rent if you lose your job", "It covers the landlord's property if there is a fire", "It protects your personal belongings from theft or damage inside your rental unit", "It reduces the cost of your monthly utility bills"],
+      "correct_answer": "It protects your personal belongings from theft or damage inside your rental unit"
+    },
+    {
+      "topic": "Independent Living & Household Management",
+      "difficulty": "hard",
+      "question": "You notice that the sink in your apartment is leaking. What should be your first step?",
+      "options": ["Ignore it and hope it stops on its own", "Try to fix it yourself with no experience", "Contact your landlord or property manager to report the issue promptly", "Post a video of the leak online"],
+      "correct_answer": "Contact your landlord or property manager to report the issue promptly"
+    },
+    {
+      "topic": "Health & Wellness",
+      "difficulty": "easy",
+      "question": "Besides physical health, what is another crucial aspect of your overall well-being?",
+      "options": ["The number of followers you have", "Your video game high score", "Mental and emotional health", "The brand of clothes you wear"],
+      "correct_answer": "Mental and emotional health"
+    },
+    {
+      "topic": "Health & Wellness",
+      "difficulty": "easy",
+      "question": "Which of these is a fundamental habit for maintaining good physical health?",
+      "options": ["Staying up all night", "A balanced diet and regular exercise", "Eating fast food every day", "Avoiding all forms of physical activity"],
+      "correct_answer": "A balanced diet and regular exercise"
+    },
+    {
+      "topic": "Health & Wellness",
+      "difficulty": "medium",
+      "question": "What is a health insurance 'deductible'?",
+      "options": ["A discount you get for being healthy", "The monthly fee you pay for your insurance plan", "The amount of money you must pay out-of-pocket before your insurance starts to pay", "A type of medicine"],
+      "correct_answer": "The amount of money you must pay out-of-pocket before your insurance starts to pay"
+    },
+    {
+      "topic": "Health & Wellness",
+      "difficulty": "medium",
+      "question": "Why is it important to schedule regular check-ups with a doctor, even if you don't feel sick?",
+      "options": ["To get a note to skip work or school", "Doctors are lonely and appreciate the company", "For preventative care and to catch potential health issues early", "To collect free pens and notepads from the office"],
+      "correct_answer": "For preventative care and to catch potential health issues early"
+    },
+    {
+      "topic": "Health & Wellness",
+      "difficulty": "hard",
+      "question": "What does the term 'work-life balance' mean?",
+      "options": ["The ability to balance objects while at work", "Only working on days that have a 'life' event scheduled", "Prioritizing work above all personal activities", "Managing your time and energy between your career and your personal life to avoid burnout"],
+      "correct_answer": "Managing your time and energy between your career and your personal life to avoid burnout"
+    },
+    {
+      "topic": "Health & Wellness",
+      "difficulty": "hard",
+      "question": "Which of the following is a healthy and effective strategy for managing stress?",
+      "options": ["Ignoring the source of stress until it goes away", "Engaging in activities like exercise, meditation, or talking with a trusted friend", "Complaining constantly without seeking a solution", "Working longer hours to avoid thinking about it"],
+      "correct_answer": "Engaging in activities like exercise, meditation, or talking with a trusted friend"
+    },
+    {
+      "topic": "Personal Growth & Communication",
+      "difficulty": "easy",
+      "question": "What is an important part of 'active listening'?",
+      "options": ["Thinking about what you're going to say next while the other person is talking", "Interrupting to share your own story", "Paying full attention to the speaker and showing you understand", "Checking your phone while they talk"],
+      "correct_answer": "Paying full attention to the speaker and showing you understand"
+    },
+    {
+      "topic": "Personal Growth & Communication",
+      "difficulty": "easy",
+      "question": "Why is it beneficial to set 'SMART' (Specific, Measurable, Achievable, Relevant, Time-bound) goals?",
+      "options": ["It guarantees you will never fail", "It provides a clear roadmap and increases the likelihood of achieving them", "It makes the goals sound more intelligent", "It is the only way to make friends"],
+      "correct_answer": "It provides a clear roadmap and increases the likelihood of achieving them"
+    },
+    {
+      "topic": "Personal Growth & Communication",
+      "difficulty": "medium",
+      "question": "What is 'constructive criticism'?",
+      "options": ["Insults designed to make someone feel bad", "Feedback that is vague and unhelpful", "Feedback that is focused on being helpful and providing specific suggestions for improvement", "Criticizing someone for building something"],
+      "correct_answer": "Feedback that is focused on being helpful and providing specific suggestions for improvement"
+    },
+    {
+      "topic": "Personal Growth & Communication",
+      "difficulty": "medium",
+      "question": "Why is building a reliable support network of friends, family, or mentors important in adult life?",
+      "options": ["So you have people to borrow money from", "To provide emotional and practical support during challenging times", "To become more popular on social media", "So you never have to solve a problem on your own"],
+      "correct_answer": "To provide emotional and practical support during challenging times"
+    },
+    {
+      "topic": "Personal Growth & Communication",
+      "difficulty": "hard",
+      "question": "What is the difference between being 'assertive' and being 'aggressive'?",
+      "options": ["There is no difference", "Assertive people are quiet, and aggressive people are loud", "Assertiveness is expressing your thoughts and needs respectfully, while aggressiveness is doing so in a hostile or demanding way", "Aggressive people are always more successful"],
+      "correct_answer": "Assertiveness is expressing your thoughts and needs respectfully, while aggressiveness is doing so in a hostile or demanding way"
+    },
+    {
+      "topic": "Personal Growth & Communication",
+      "difficulty": "hard",
+      "question": "In a disagreement, what is the benefit of using 'I statements' (e.g., 'I feel frustrated when...') instead of 'you statements' (e.g., 'You always...')?",
+      "options": ["It makes you sound more important", "It helps you avoid taking any responsibility", "It communicates your feelings without blaming the other person, which can lead to a more productive conversation", "It is a way to secretly insult the other person"],
+      "correct_answer": "It communicates your feelings without blaming the other person, which can lead to a more productive conversation"
+    }
+]

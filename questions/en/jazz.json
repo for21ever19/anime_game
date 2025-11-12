@@ -1,0 +1,212 @@
+[
+    {
+      "topic": "History of Jazz & Styles",
+      "difficulty": "easy",
+      "question": "In which city is jazz widely considered to have originated?",
+      "options": ["New York", "Chicago", "New Orleans", "St. Louis"],
+      "correct_answer": "New Orleans"
+    },
+    {
+      "topic": "History of Jazz & Styles",
+      "difficulty": "easy",
+      "question": "The 'Swing' era of the 1930s and 1940s was dominated by what type of ensemble?",
+      "options": ["Small Trios", "Vocal Quartets", "Big Bands", "Solo Pianists"],
+      "correct_answer": "Big Bands"
+    },
+    {
+      "topic": "History of Jazz & Styles",
+      "difficulty": "medium",
+      "question": "Which style of jazz emerged in the 1940s and was characterized by fast tempos, complex chord progressions, and instrumental virtuosity?",
+      "options": ["Cool Jazz", "Dixieland", "Bebop", "Gypsy Jazz"],
+      "correct_answer": "Bebop"
+    },
+    {
+      "topic": "History of Jazz & Styles",
+      "difficulty": "medium",
+      "question": "What is 'Cool Jazz' primarily known for?",
+      "options": ["Loud and aggressive solos", "Relaxed tempos and a lighter tone", "Simple, repetitive melodies", "Exclusively using brass instruments"],
+      "correct_answer": "Relaxed tempos and a lighter tone"
+    },
+    {
+      "topic": "History of Jazz & Styles",
+      "difficulty": "hard",
+      "question": "What is the defining characteristic of 'Free Jazz,' which emerged in the late 1950s?",
+      "options": ["Strict adherence to classical music forms", "The abandonment of preset chord changes, tempos, and meters", "Only using instruments that were invented in the 20th century", "The requirement that all musicians sing their parts"],
+      "correct_answer": "The abandonment of preset chord changes, tempos, and meters"
+    },
+    {
+      "topic": "History of Jazz & Styles",
+      "difficulty": "hard",
+      "question": "The style of jazz fusion, which rose to prominence in the late 1960s and 1970s, combines jazz with elements of what other genre?",
+      "options": ["Country", "Folk", "Classical", "Rock"],
+      "correct_answer": "Rock"
+    },
+    {
+      "topic": "Famous Jazz Musicians",
+      "difficulty": "easy",
+      "question": "Who was the legendary trumpeter and singer known by the nickname 'Satchmo'?",
+      "options": ["Miles Davis", "Louis Armstrong", "Dizzy Gillespie", "Duke Ellington"],
+      "correct_answer": "Louis Armstrong"
+    },
+    {
+      "topic": "Famous Jazz Musicians",
+      "difficulty": "easy",
+      "question": "Which pianist and composer led a famous big band and wrote classics like 'Take the A Train'?",
+      "options": ["Thelonious Monk", "Count Basie", "Duke Ellington", "Herbie Hancock"],
+      "correct_answer": "Duke Ellington"
+    },
+    {
+      "topic": "Famous Jazz Musicians",
+      "difficulty": "medium",
+      "question": "The saxophonist nicknamed 'Bird' who was a leading figure in the development of bebop was named:",
+      "options": ["Lester Young", "John Coltrane", "Charlie Parker", "Coleman Hawkins"],
+      "correct_answer": "Charlie Parker"
+    },
+    {
+      "topic": "Famous Jazz Musicians",
+      "difficulty": "medium",
+      "question": "Miles Davis's 1959 album 'Kind of Blue' is a landmark recording in which subgenre of jazz?",
+      "options": ["Modal Jazz", "Free Jazz", "Swing", "Dixieland"],
+      "correct_answer": "Modal Jazz"
+    },
+    {
+      "topic": "Famous Jazz Musicians",
+      "difficulty": "hard",
+      "question": "Which pianist was known for his highly unorthodox, percussive style and compositions like ''Round Midnight'?",
+      "options": ["Bill Evans", "Thelonious Monk", "Art Tatum", "Oscar Peterson"],
+      "correct_answer": "Thelonious Monk"
+    },
+    {
+      "topic": "Famous Jazz Musicians",
+      "difficulty": "hard",
+      "question": "John Coltrane's album 'A Love Supreme' is considered a masterpiece of which style of jazz?",
+      "options": ["Early Swing", "Gypsy Jazz", "Avant-garde and Spiritual Jazz", "Cool Jazz"],
+      "correct_answer": "Avant-garde and Spiritual Jazz"
+    },
+    {
+      "topic": "Jazz Instruments",
+      "difficulty": "easy",
+      "question": "What three instruments typically form the core of a jazz 'rhythm section'?",
+      "options": ["Violin, Cello, and Flute", "Trumpet, Trombone, and Saxophone", "Piano, Bass, and Drums", "Clarinet, Tuba, and Banjo"],
+      "correct_answer": "Piano, Bass, and Drums"
+    },
+    {
+      "topic": "Jazz Instruments",
+      "difficulty": "easy",
+      "question": "Which woodwind instrument, played by artists like Benny Goodman, was a very popular lead instrument during the Swing era?",
+      "options": ["Flute", "Clarinet", "Oboe", "Bassoon"],
+      "correct_answer": "Clarinet"
+    },
+    {
+      "topic": "Jazz Instruments",
+      "difficulty": "medium",
+      "question": "What is a 'walking bassline'?",
+      "options": ["A bass part with very long, held notes", "A bassline where a note is played on every beat, outlining the chord progression", "A very fast and complicated bass solo", "Playing the bass with a bow instead of plucking"],
+      "correct_answer": "A bassline where a note is played on every beat, outlining the chord progression"
+    },
+    {
+      "topic": "Jazz Instruments",
+      "difficulty": "medium",
+      "question": "When a pianist or guitarist plays chords in a rhythmic way to support a soloist, it is called:",
+      "options": ["Comping", "Walking", "Scatting", "Shedding"],
+      "correct_answer": "Comping"
+    },
+    {
+      "topic": "Jazz Instruments",
+      "difficulty": "hard",
+      "question": "The use of 'mutes' on brass instruments like trumpets and trombones is done for what purpose?",
+      "options": ["To make the instrument louder", "To protect the instrument from damage", "To change the timbre (tonal quality) of the sound", "To help the musician play in tune"],
+      "correct_answer": "To change the timbre (tonal quality) of the sound"
+    },
+    {
+      "topic": "Jazz Instruments",
+      "difficulty": "hard",
+      "question": "Which member of the saxophone family was largely popularized as a lead jazz instrument by John Coltrane?",
+      "options": ["Baritone Saxophone", "Alto Saxophone", "Soprano Saxophone", "Bass Saxophone"],
+      "correct_answer": "Soprano Saxophone"
+    },
+    {
+      "topic": "Jazz Theory & Terminology",
+      "difficulty": "easy",
+      "question": "What is it called when a musician creates a new melody on the spot over a song's chord progression?",
+      "options": ["Composition", "Arrangement", "Improvisation", "Transcription"],
+      "correct_answer": "Improvisation"
+    },
+    {
+      "topic": "Jazz Theory & Terminology",
+      "difficulty": "easy",
+      "question": "The main melody of a jazz tune is often referred to as the:",
+      "options": ["The Tail", "The Head", "The Body", "The Bridge"],
+      "correct_answer": "The Head"
+    },
+    {
+      "topic": "Jazz Theory & Terminology",
+      "difficulty": "medium",
+      "question": "What is the rhythmic feeling, characteristic of jazz, that creates a 'lilting' or 'uneven eighth note' feel?",
+      "options": ["Straight time", "Waltz time", "Swing", "Syncopation"],
+      "correct_answer": "Swing"
+    },
+    {
+      "topic": "Jazz Theory & Terminology",
+      "difficulty": "medium",
+      "question": "Vocal improvisation that uses nonsense syllables instead of words is called:",
+      "options": ["Yodeling", "Belting", "Scat singing", "Crooning"],
+      "correct_answer": "Scat singing"
+    },
+    {
+      "topic": "Jazz Theory & Terminology",
+      "difficulty": "hard",
+      "question": "What does the term 'changes' refer to in jazz?",
+      "options": ["The different instruments used in a song", "The chord progression of a tune", "The tempo shifts during a performance", "The way the melody is altered"],
+      "correct_answer": "The chord progression of a tune"
+    },
+    {
+      "topic": "Jazz Theory & Terminology",
+      "difficulty": "hard",
+      "question": "A 'turnaround' is a passage of chords found where in a song's form?",
+      "options": ["Only in the very beginning", "In the middle of the B section", "At the end of a section to lead back to the beginning", "It can be anywhere at random"],
+      "correct_answer": "At the end of a section to lead back to the beginning"
+    },
+    {
+      "topic": "The Blues & Its Influence",
+      "difficulty": "easy",
+      "question": "A standard blues progression is typically how many measures (bars) long?",
+      "options": ["8 bars", "12 bars", "16 bars", "32 bars"],
+      "correct_answer": "12 bars"
+    },
+    {
+      "topic": "The Blues & Its Influence",
+      "difficulty": "easy",
+      "question": "The expressive notes in blues and jazz that are played at a slightly different pitch than standard are called:",
+      "options": ["Wrong notes", "Happy notes", "Blue notes", "Key notes"],
+      "correct_answer": "Blue notes"
+    },
+    {
+      "topic": "The Blues & Its Influence",
+      "difficulty": "medium",
+      "question": "What is the most common lyrical structure for a verse in traditional blues music?",
+      "options": ["AABB (two rhyming couplets)", "ABAB (alternating rhyme)", "AAB (a line is repeated, followed by a new rhyming line)", "ABC (three different lines)"],
+      "correct_answer": "AAB (a line is repeated, followed by a new rhyming line)"
+    },
+    {
+      "topic": "The Blues & Its Influence",
+      "difficulty": "medium",
+      "question": "The musical pattern where one musician plays a phrase and another musician responds with a complementary phrase is known as:",
+      "options": ["Call and Response", "Question and Answer", "Verse and Chorus", "Theme and Variation"],
+      "correct_answer": "Call and Response"
+    },
+    {
+      "topic": "The Blues & Its Influence",
+      "difficulty": "hard",
+      "question": "In a standard 12-bar blues in the key of C, what are the three basic chords used?",
+      "options": ["C, D, E", "C, F, G", "C, A, B", "C, E, G"],
+      "correct_answer": "C, F, G"
+    },
+    {
+      "topic": "The Blues & Its Influence",
+      "difficulty": "hard",
+      "question": "Which region of the United States is most famously known as the birthplace of the Delta Blues style?",
+      "options": ["The Pacific Northwest", "New England", "The Midwest", "The Mississippi Delta"],
+      "correct_answer": "The Mississippi Delta"
+    }
+]

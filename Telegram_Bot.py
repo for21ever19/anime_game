@@ -151,8 +151,7 @@ class TelegramBot:
 
 
         if query.data == 'start_quiz':
-            subjects = app.all_subjects_data.keys()
-
+            subjects = app.get_subjects_for_language(app.language)
             keyboard = []
 
             for subject in subjects:
