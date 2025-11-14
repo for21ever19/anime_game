@@ -199,7 +199,7 @@ class TelegramBot:
 
         elif query.data.startswith('subject_'):
             self.selected_subject = query.data[8:]
-            app.subject_selected(selected_subject)
+            app.subject_selected(self.selected_subject)
 
             # 1. Наш словарь-переходник. Все верно.
             difficulties = {
@@ -231,7 +231,7 @@ class TelegramBot:
             difficulty_keyboard = InlineKeyboardMarkup(keyboard)
 
             # 5. Отправляем сообщение с текстом и готовой клавиатурой
-            subject_name = selected_subject.capitalize()
+            subject_name = self.selected_subject.capitalize()
             await query.edit_message_text(
                 text=localization.get_string(language, 'select_difficulty_text', subject = subject_name),
                 reply_markup=difficulty_keyboard
@@ -302,8 +302,7 @@ class TelegramBot:
 
         
         elif query.data == 'back_to_difficulty_menu': 
-            selected_subject = self.selected_subject
-            app.subject_selected(selected_subject)
+            app.subject_selected(self.selected_subject)
 
             # 1. Наш словарь-переходник. Все верно.
             difficulties = {
@@ -335,7 +334,7 @@ class TelegramBot:
             difficulty_keyboard = InlineKeyboardMarkup(keyboard)
 
             # 5. Отправляем сообщение с текстом и готовой клавиатурой
-            subject_name = selected_subject.capitalize()
+            subject_name = self.selected_subject.capitalize()
             await query.edit_message_text(
                 text=localization.get_string(language, 'select_difficulty_text', subject = subject_name),
                 reply_markup=difficulty_keyboard
